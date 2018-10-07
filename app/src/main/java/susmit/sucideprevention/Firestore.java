@@ -1,4 +1,4 @@
-package e.susmit.business_savepasswords;
+package susmit.sucideprevention;
 
 import android.support.annotation.NonNull;
 import android.util.Log;
@@ -23,17 +23,16 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class Firestore {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference collectionReference;
-    String[] data = new String[]{"Please", "Wait"};
-    private Common common;
+    
 
 
-    public void addData(String forname, String username, String password) throws GeneralSecurityException {
-        common = new Common();
+    public void addData(String name, String contact, String trustedContact) throws GeneralSecurityException {
+        collectionReference = db.collection("users");
         Map<String, String> data = new HashMap<>();
-        data.put("forName", common.enCodePass(forname));
-        data.put("userName", username);
-        data.put("passWord", password);
-        collectionReference = db.collection("Storage");
+        data.put("forName",name);
+        data.put("userName", contact);
+        data.put("passWord", trustedContact);
+
         collectionReference.add(data).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
             @Override
             public void onSuccess(DocumentReference documentReference) {
@@ -47,52 +46,24 @@ public class Firestore {
         });
     }
 
-    public void readData(String forname) throws GeneralSecurityException {
-        common = new Common();
-        collectionReference = db.collection("Storage");
-        final Query query = collectionReference.whereEqualTo("forName", common.enCodePass(forname));
 
-        query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if (task.isSuccessful()) {
-                    for (QueryDocumentSnapshot document : task.getResult()) {
-                        String docId = document.getId();
-                        DocumentReference documentReference = db.document("Storage/" + docId);
-                        documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                            @Override
-                            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                                data[0] = documentSnapshot.getString("userName");
-                                data[1] = documentSnapshot.getString("passWord");
-                            }
-                        });
-                    }
-                }
 
-            }
-        });
 
-    }
 
-    public String[] getData()
-    {
-        return data;
-    }
 
     public void changeData(String forname, String username, String password) throws GeneralSecurityException {
-        common = new Common();
-        collectionReference = db.collection("Storage");
-        final Query query = collectionReference.whereEqualTo("forName", common.enCodePass(forname));
+
+        collectionReference = db.collection("users");
+        final Query query = collectionReference.whereEqualTo("forName", forname);
         query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()){
                     for (QueryDocumentSnapshot document: task.getResult()){
                         String docId = document.getId();
-                        DocumentReference documentReference = db.document("Storage/" + docId);
+                        DocumentReference documentReference = db.document("users/" + docId);
                         Map<String, Object> update = new HashMap<String, Object>() {{
-                            put("userName", username);
-                            put("passWord", password);
+                            put("Danger", 1);
                         }
                         };
                         documentReference.update(update);
@@ -103,10 +74,9 @@ public class Firestore {
 
     }
 
-    public void delData(String forname) throws GeneralSecurityException {
-        common = new Common();
-        collectionReference = db.collection("Storage");
-        final Query query = collectionReference.whereEqualTo("forName", common.enCodePass(forname));
+    public void delData(String name) throws GeneralSecurityException {
+        collectionReference = db.collection("users");
+        final Query query = collectionReference.whereEqualTo("Name", name);
         query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -116,7 +86,7 @@ public class Firestore {
                     {
                         String docId = documentSnapshot.getId();
                         DocumentReference documentReference = FirebaseFirestore.getInstance()
-                                                              .collection("Storage")
+                                                              .collection("users")
                                                               .document(docId);
                         documentReference.delete();
                     }

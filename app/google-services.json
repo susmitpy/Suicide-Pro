@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "65063722978",
+    "firebase_url": "https://sucideprevention-d4cfd.firebaseio.com",
+    "project_id": "sucideprevention-d4cfd",
+    "storage_bucket": "sucideprevention-d4cfd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:65063722978:android:38c3976b7accf224",
+        "android_client_info": {
+          "package_name": "susmit.sucideprevention"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "65063722978-n57scesisue5sfep8c6fpd42vse99sia.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "susmit.sucideprevention",
+            "certificate_hash": "bd12ed27292ec63240fdc45e1af0d122504e8105"
+          }
+        },
+        {
+          "client_id": "65063722978-u1fdmr8vku2db6911ndiqcfbetnh411c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgntGWhgXgitxbLdyKtbWl4hkFlrwsyhM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "65063722978-u1fdmr8vku2db6911ndiqcfbetnh411c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
