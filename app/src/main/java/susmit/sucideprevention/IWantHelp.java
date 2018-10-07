@@ -22,6 +22,6 @@ public class IWantHelp extends AppCompatActivity {
         TelephonyManager phoneMgr = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
         @SuppressLint("MissingPermission") String numberToCall = phoneMgr.getLine1Number();
         // Send number to call to server
-      
+
     }
 }
