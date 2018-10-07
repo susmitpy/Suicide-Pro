@@ -1,4 +1,4 @@
-package e.susmit.remoteaccess;
+package susmit.sucideprevention;
 
 import android.app.Activity;
 import android.app.Application;
@@ -46,7 +46,7 @@ public class ForBind extends Activity
             manager.createNotificationChannel(notificationChannel);
 
         }
-        Intent intent1 = new Intent(ForBind.this, onBrodcast.class);
+        Intent intent1 = new Intent(ForBind.this, Prediction.class);
 
 
 

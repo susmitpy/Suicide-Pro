@@ -1,4 +1,4 @@
-package e.susmit.remoteaccess;
+package susmit.sucideprevention;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
