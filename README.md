@@ -1,2 +1,2 @@
-# Sucide Pro
+# Suicide Pro
 # Prevent Suicide!
