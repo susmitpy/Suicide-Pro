@@ -27,14 +27,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                     startActivity(new Intent(MainActivity.this, SomeoneNeedsHelp.class));
-                    Intent phoneIntent1 = new Intent(Intent.ACTION_CALL);
-                    phoneIntent1.setData(Uri.parse("tel:" + "02227546669"));
-                    try {
-                        phoneIntent1.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(phoneIntent1);
-                    } catch (SecurityException e) {
-                        e.printStackTrace();
-                    }
+
                 }
         });
     }
